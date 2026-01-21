@@ -2,8 +2,23 @@
 
 void default_constants();
 
+// Worst case
+
 void middleGoal();
 
-void elimLongGoal();
+// Elim
 
-void controlZoneLongGoal();
+void elimLongGoalLeft();
+
+void elimLongGoalRight();
+
+// Control Zone
+void controlZoneLeftLongGoal();
+
+void controlZoneRightLongGoal();
+
+// BIGGIES
+
+void soloAWP();
+
+void skills();

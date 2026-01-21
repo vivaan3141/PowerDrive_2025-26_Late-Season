@@ -94,7 +94,7 @@ void middleGoal() {
   scorer.move(-60);
 }
 
-void elimLongGoal() {
+void elimLongGoalLeft() {
   //Left Auton
   //Initialization
   chassis.slew_drive_set(true);  // Enables global slew
@@ -153,7 +153,7 @@ void elimLongGoal() {
   scorer.move(120);
 }
 
-void controlZoneLongGoal(){
+void controlZoneLeftLongGoal(){
   //init
   chassis.slew_drive_set(true);  // Enables global slew
   chassis.slew_drive_constants_set(5_in, 50);
@@ -176,6 +176,19 @@ void controlZoneLongGoal(){
   scorer.move(120);
 // Add control zone push
 }
+
+void controlZoneRightLongGoal(){
+  // Tune left side, then apply right side
+}
+
+void soloAWP(){
+  // Big auton! do it last
+}
+
+void skills(){
+  // BIG auton! DO it after soloAWP
+}
+
 
 
 
