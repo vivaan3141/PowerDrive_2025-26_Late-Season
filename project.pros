@@ -425,8 +425,8 @@
     },
     "upload_options": {
       "description": "Our code! v.2",
-      "slot": 2,
-      "icon": "pros"
+      "slot": 1,
+      "icon": "X"
     },
     "use_early_access": false
   }
