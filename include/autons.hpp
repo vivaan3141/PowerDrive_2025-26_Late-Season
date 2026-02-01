@@ -1,5 +1,5 @@
 #pragma once
-// Init()
+// Init() 
 void default_constants();
 // Worst case
 void middleGoal();

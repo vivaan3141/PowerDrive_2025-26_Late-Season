@@ -62,7 +62,9 @@ void initialize() {
       {"LEFT - 4 blocks - Long Goal, Push into C-Zone\n\n Setup: Old Setup",controlZoneLeftLongGoal},
       {"RIGHT - 4 blocks - Long Goal, Push into C-Zone\n\n Setup: Old Setup",controlZoneRightLongGoal},
       {"? - ? blocks - ?\n\n Setup: New",soloAWP},
-      {"? - ? blocks - ?\n\n Setup: New",skills},
+      {"? - ? blocks - ?\n\n Set up: New",skills},
+      
+      
       
 
       

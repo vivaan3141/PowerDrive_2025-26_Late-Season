@@ -189,6 +189,8 @@ void skills(){
   // BIG auton! DO it after soloAWP
 }
 
-
+void elimLongGoalRight(){
+  //Do after tuning
+}
 
 
