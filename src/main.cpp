@@ -57,13 +57,14 @@ void initialize() {
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
       {"LEFT - 4 blocks - Middle Goal\n\n 4 blocks in middle goal", middleGoal},
-      {"LEFT - 7 blocks - Elim. Long Goal\n\n3 blocks from middle goal area, then load 3 blocks, then score 7 in long goal", elimLongGoalLeft},
+      {"2/4/26 - run8 LEFT - 7 blocks - Elim. Long Goal\n\n3 blocks from middle goal area, then load 3 blocks, then score 7 in long goal", elimLongGoalLeft},
       {"RIGHT - 7 blocks - Elim. Long Goal\n\n3 blocks from low goal area, then load 3 blocks, then score 7 in long goal", elimLongGoalLeft},
       {"LEFT - 4 blocks - Long Goal, Push into C-Zone\n\n Setup: Old Setup",controlZoneLeftLongGoal},
       {"RIGHT - 4 blocks - Long Goal, Push into C-Zone\n\n Setup: Old Setup",controlZoneRightLongGoal},
+      {"LEFT - 4 Middle + 3 Long Goal",middleLongGoal},
       {"? - ? blocks - ?\n\n Setup: New",soloAWP},
       {"? - ? blocks - ?\n\n Set up: New",skills},
-      
+
       
       
 
@@ -265,6 +266,7 @@ void opcontrol() {
       intake.move(0);
     }
     descore.button_toggle(master.get_digital(DIGITAL_Y));
+    loader.button_toggle(master.get_digital(DIGITAL_X));
 
     if (master.get_digital(DIGITAL_R2)) {
       scorer.move(127);
@@ -276,5 +278,6 @@ void opcontrol() {
       scorer.move(0);
     }
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
+
   }
 }

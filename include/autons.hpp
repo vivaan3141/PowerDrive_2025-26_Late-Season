@@ -1,8 +1,9 @@
 #pragma once
 // Init() 
 void default_constants();
-// Worst case
+// Reg case
 void middleGoal();
+void middleLongGoal();
 // Elim
 void elimLongGoalLeft();
 void elimLongGoalRight();
