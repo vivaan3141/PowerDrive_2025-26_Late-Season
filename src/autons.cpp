@@ -122,7 +122,7 @@ void elimLongGoalLeft() {
   //Forward 24 inches 
   intake.move(100);
 
-  chassis.pid_drive_set(28_in, 40,false);
+  chassis.pid_drive_set(28_in, 100 ,false);
   chassis.pid_wait();
   
   pros::delay(1000);
@@ -134,11 +134,11 @@ void elimLongGoalLeft() {
   chassis.pid_turn_set(45_deg, 120);
   chassis.pid_wait();
   //Back 15 inches
-  chassis.pid_drive_set(-26.5_in, 80);
+  chassis.pid_drive_set(-27.5_in, 100);
   chassis.pid_wait();
   pros::delay(100);
 
-  chassis.pid_turn_set(180_deg, 80);
+  chassis.pid_turn_set(180_deg, 100);
   chassis.pid_wait();
 
   loader.set(true);  
