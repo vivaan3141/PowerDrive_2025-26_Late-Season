@@ -56,6 +56,7 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.autons_add({
+      {"* * *!!! LEFT - 4 + 3 blocks - Middle+Long Goal\n\n 4 blocks in middle goal, 3 in long", lowLong},
       {"* * *!!! LEFT - 4 + 3 blocks - Middle+Long Goal\n\n 4 blocks in middle goal, 3 in long", middleLongGoal},
       {"* * *!! LEFT - 7blocks - Long Goal\n\n", elimLongGoalLeft},
       {"* RIGHT - 4 blocks - Long Goal, Push into C-Zone\n\n",controlZoneRightLongGoal},

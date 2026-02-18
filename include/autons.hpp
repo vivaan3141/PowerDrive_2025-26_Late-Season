@@ -4,6 +4,7 @@ void default_constants();
 // Reg case
 void middleGoal();
 void middleLongGoal();
+void lowLong();
 // Elim
 void elimLongGoalLeft();
 void elimLongGoalRight();
