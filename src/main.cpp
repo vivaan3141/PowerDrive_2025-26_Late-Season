@@ -55,14 +55,19 @@ void initialize() {
   // chassis.opcontrol_curve_buttons_right_set(pros::E_CONTROLLER_DIGITAL_Y, pros::E_CONTROLLER_DIGITAL_A);
 
   // Autonomous Selector using LLEMU
+
   ez::as::auton_selector.autons_add({
-      {"* * *!!! LEFT - 4 + 3 blocks - Middle+Long Goal\n\n 4 blocks in middle goal, 3 in long", lowLong},
-      {"* * *!!! LEFT - 4 + 3 blocks - Middle+Long Goal\n\n 4 blocks in middle goal, 3 in long", middleLongGoal},
-      {"* * *!! LEFT - 7blocks - Long Goal\n\n", elimLongGoalLeft},
-      {"* RIGHT - 4 blocks - Long Goal, Push into C-Zone\n\n",controlZoneRightLongGoal},
-      {"* * **** ** LEFT - 4 blocks - Long Goal, Push into C-Zone\n\n ",controlZoneLeftLongGoal},
-      {"* * * * * Right SKILLS?\n\n ",skills},
-      {"* * * LEFT - 4 blocks - Middle Goal\n\n 4 blocks in middle goal", middleGoal},
+      {"LEFT - 4 + 3 blocks - Middle+Long Goal\n\n Setup: Left Side 90", middleLongGoal},
+      {"GG1 RIGHT - 7 blocks - Long Goal\n\n Setup: Right Side 90", elimLongGoalRight},
+      {"LEFT - 4 blocks - Long Goal, Push into C-Zone\n\nSetup: Left Side FORWARD ",controlZoneLeftLongGoal},
+      {"RIGHT - 4 blocks - Long Goal, Push into C-Zone\n\n Setup: Right Side FORWARD",controlZoneRightLongGoal},
+      {"*bad* LEFT - 4 + 3 blocks - Middle+Long Goal\n\n Setup: Left Side 90", GmiddleLongGoal},
+      {"LEFT - 7 blocks - Long Goal\n\n Setup: Left Side 90", elimLongGoalLeft},
+      {" Left SKILL.\n\n Setup: Left Side 90",skillsBIG},
+      {"UNTESTED!! LEFT - 4 blocks - Middle Goal\n\n Setup: Left Side FORWARD", middleGoal},
+      {"DO NOT RUN!! - RIGHT - 4 + 3 blocks - Middle+Long Goal\n\n Setup: Right Side 90", lowLong},
+      {"Park", Gpark},
+      {"2.122 Right SKILLS.\n\n Setup: Right Side 90 ",skills},
   });
 
   // Initialize chassis and auton selector

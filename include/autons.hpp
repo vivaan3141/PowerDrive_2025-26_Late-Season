@@ -14,3 +14,8 @@ void controlZoneRightLongGoal();
 // BIGGIES
 void soloAWP();
 void skills();
+void skillsBIG();
+
+void GmiddleLongGoal();
+void Gpark();
+

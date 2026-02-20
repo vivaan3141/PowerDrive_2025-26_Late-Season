@@ -180,67 +180,65 @@ void middleGoal() {
 }
 
 void elimLongGoalLeft() {
-  chassis.slew_drive_set(true);
-  chassis.slew_turn_set(true);
-
   chassis.slew_drive_set(true);  // Enables global slew
-  chassis.slew_drive_constants_set(5_in, 50);
+  chassis.slew_drive_constants_set(3_in, 60);
   chassis.slew_turn_set(true);  // Enables global slew
-  chassis.slew_turn_constants_set(5_deg, 50);
-
+  chassis.slew_turn_constants_set(3_deg, 60);
+  //Initialize as 270
   chassis.drive_angle_set(270_deg); 
+  
+  chassis.pid_swing_set(ez::LEFT_SWING, -35, 110); 
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(2_deg, 127);
+  chassis.pid_wait_quick_chain();
 
-  chassis.pid_swing_set(ez::LEFT_SWING, 0, 120); 
-  chassis.pid_wait();
+  chassis.pid_drive_set(13_in, 127);
+  chassis.pid_wait_quick();
+  intake.move(127);
 
-  chassis.pid_drive_set(11_in, 127,false);
-  chassis.pid_wait();
-  intake.move(100);
   loader.set(true);  
   pros::delay(500);
-  chassis.pid_drive_set(10_in, 127,false);
-  chassis.pid_wait();
-  pros::delay(200);
 
- chassis.pid_drive_set(-3_in, 127,false);
+  chassis.pid_drive_set(13_in, 127);
+  chassis.pid_wait_quick();
+
+ chassis.pid_drive_set(-2_in, 127,false);
   chassis.pid_wait();
   //Turn 135 left 
   chassis.pid_turn_set(225_deg, 127, false);
   chassis.pid_wait();
-  //Back 15 incheS
-  loader.set(false);  
-  
-
-  // long goal
-intake.move(0);
-  scorer.move(0);
-   chassis.pid_drive_set(47_in, 100);
+  //Back 15 inches
+ 
+   chassis.pid_drive_set(32.5_in, 90);
   chassis.pid_wait();
-loader.set(true);  
-  pros::delay(500);
+  loader.set(true);  
+  pros::delay(250);
   chassis.pid_turn_set(180_deg, 127, false);
   chassis.pid_wait();
 
-  
-  chassis.pid_drive_set(-14_in, 80);
-  chassis.pid_wait();
-  intake.move(127);
-  scorer.move(127);
-  pros::delay(700);
-  loader.set(true);  
-
-  chassis.pid_drive_set(23_in, 80);
+  chassis.pid_drive_set(10_in, 80);
   chassis.pid_wait();
 
-  intake.move(70);
+  intake.move(100);
   pros::delay(600);
-  intake.move(127);
 
- chassis.pid_drive_set(-23_in, 80);
+
+  chassis.pid_turn_set(180_deg, 80); // Safety Turn
   chassis.pid_wait();
+    intake.move(127);
 
+  chassis.pid_drive_set(-22.5_in, 127);
+  chassis.pid_wait(); 
+    intake.move(127);
+
+ chassis.pid_turn_set(180_deg, 127, false);
+  chassis.pid_wait();
   loader.set(false);  
+  // TUNE END ***************************************
+//long goal
   scorer.move(127);
+
+
 
 
 }
@@ -347,7 +345,7 @@ void middleLongGoal(){
   chassis.pid_drive_set(13_in, 127);
   chassis.pid_wait_quick();
 
- chassis.pid_drive_set(-2_in, 127,false);
+ chassis.pid_drive_set(-3_in, 127,false);
   chassis.pid_wait();
   //Turn 135 left 
   chassis.pid_turn_set(225_deg, 127, false);
@@ -373,7 +371,7 @@ intake.move(0);
   chassis.pid_turn_set(180_deg, 127, false);
   chassis.pid_wait();
 
-  chassis.pid_drive_set(9_in, 80);
+  chassis.pid_drive_set(16_in, 80);
   chassis.pid_wait();
 
   intake.move(100);
@@ -384,7 +382,7 @@ intake.move(0);
   chassis.pid_wait();
     intake.move(127);
 
-  chassis.pid_drive_set(-23_in, 127);
+  chassis.pid_drive_set(-22.5_in, 127);
   chassis.pid_wait(); 
     intake.move(127);
 
@@ -395,6 +393,77 @@ intake.move(0);
 //long goal
   scorer.move(127);
 
+
+}
+void GmiddleLongGoal(){
+  chassis.slew_drive_set(true);  // Enables global slew
+  chassis.slew_drive_constants_set(3_in, 60);
+  chassis.slew_turn_set(true);  // Enables global slew
+  chassis.slew_turn_constants_set(3_deg, 60);
+  //Initialize as 270
+  chassis.drive_angle_set(270_deg); 
+  
+  chassis.pid_swing_set(ez::LEFT_SWING, -35, 110); 
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(2_deg, 127);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(13_in, 127);
+  chassis.pid_wait_quick();
+  intake.move(127);
+
+  loader.set(true);  
+  pros::delay(500);
+
+  chassis.pid_drive_set(13_in, 127);
+  chassis.pid_wait_quick();
+
+ chassis.pid_drive_set(-6.7_in, 127,false);
+  chassis.pid_wait();
+  //Turn 135 left 
+  chassis.pid_turn_set(225_deg, 127, false);
+  chassis.pid_wait();
+  //Back 15 inches
+  chassis.pid_drive_set(-13_in, 127);
+  chassis.pid_wait();
+  intake.move(0);
+
+  intake.move(127);
+  scorer.move(-127);
+  loader.set(false);  
+  pros::delay(1500);
+
+  // long goal
+intake.move(0);
+  scorer.move(0);
+   chassis.pid_drive_set(46_in, 90);
+  chassis.pid_wait();
+  loader.set(true);  
+  pros::delay(350);
+  chassis.pid_turn_set(180_deg, 127, false);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(12_in, 80);
+  chassis.pid_wait();
+
+  intake.move(100);
+  pros::delay(400);
+
+
+  chassis.pid_turn_set(180_deg, 80); // Safety Turn
+  chassis.pid_wait();
+    intake.move(127);
+
+  chassis.pid_drive_set(-22.5_in, 127);
+  chassis.pid_wait(); 
+    intake.move(127);
+
+ chassis.pid_turn_set(180_deg, 127, false);
+  chassis.pid_wait();
+  loader.set(false);  
+  // TUNE END ***************************************
+//long goal
+  scorer.move(127);
 
 }
 
@@ -475,7 +544,59 @@ void controlZoneRightLongGoal(){
 }
 
 void elimLongGoalRight(){
-  //Do after tuning
+chassis.slew_drive_set(true);  // Enables global slew
+  chassis.slew_drive_constants_set(3_in, 60);
+  chassis.slew_turn_set(true);  // Enables global slew
+  chassis.slew_turn_constants_set(3_deg, 60);
+  //Initialize as 270
+  chassis.drive_angle_set(90_deg); 
+  
+  chassis.pid_swing_set(ez::RIGHT_SWING, 35, 110); 
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(-2_deg, 127);
+  chassis.pid_wait_quick_chain();
+
+  intake.move(127);
+  chassis.pid_drive_set(15.5_in, 60);
+  chassis.pid_wait_quick();
+
+  loader.set(true);  
+  pros::delay(400);
+
+  chassis.pid_drive_set(13.5_in, 127);
+  chassis.pid_wait_quick();
+
+  chassis.pid_turn_set(135_deg, 127, false);
+  chassis.pid_wait();
+  //Back 15 inches
+ 
+   chassis.pid_drive_set(38.5_in, 90);
+  chassis.pid_wait();
+  loader.set(true);  
+  pros::delay(220);
+  chassis.pid_turn_set(180_deg, 127, false);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(16_in, 80);
+  chassis.pid_wait();
+
+  intake.move(100);
+  pros::delay(350);
+  intake.move(0);
+
+
+  chassis.pid_turn_set(180_deg, 80); // Safety Turn
+  chassis.pid_wait();
+    intake.move(127);
+
+  chassis.pid_drive_set(-22.75_in, 127);
+  chassis.pid_wait(); 
+    intake.move(127);
+
+ chassis.pid_turn_set(180_deg, 127, false);
+  chassis.pid_wait();
+  loader.set(false);  
+  scorer.move(127);
 }
 
 // Major Match
@@ -501,7 +622,7 @@ void skills(){
 
   //drive to matchlaoder
 
-  chassis.pid_drive_set(9.5_in, 63.5);
+  chassis.pid_drive_set(11_in, 63.5);
   chassis.pid_wait();
 
   //intake from matchloader
@@ -510,7 +631,7 @@ void skills(){
   intake.move(0);
 
 
-  chassis.pid_drive_set(-15.5_in, 63.5);
+  chassis.pid_drive_set(-13_in, 63.5);
   chassis.pid_wait();
 
   chassis.pid_turn_set(180_deg, 45);
@@ -525,7 +646,7 @@ void skills(){
   //chassis.pid_turn_relative_set(180, 60);
   //chassis.pid_turn_set(270_deg, 60);
   //chassis.pid_wait();
-  chassis.pid_drive_set(-92.5_in, 50);
+  chassis.pid_drive_set(-94_in, 50);
   chassis.pid_wait();
 
   //drive to long goal
@@ -533,26 +654,30 @@ void skills(){
   chassis.pid_wait();
 
   pros::delay (500);
-  chassis.pid_drive_set(-8.6_in, 50); //og -18 -2/12
+  chassis.pid_drive_set(-8.8_in, 50); //og -18 -2/12
   chassis.pid_wait();
 
   intake.move (127); //scoreTop
     scorer.move (127);
 
-  pros::delay (2500); // scored first match loader
+  pros::delay (3000); // scored first match loader
 
-
+intake.move (-60); //scoreTop
+  pros::delay (1000); // scored first match loader
+intake.move (127); //scoreTop
+    scorer.move (127);
+      pros::delay (3000); // scored first match loader
   //prep for matchloader
   //scraper.set (true); removed b/c never closed above
   intake.move (0); //stopAll
   scorer.move (0); //stopAll
 
   //drive to matchloader 2
-  chassis.pid_drive_set(4_in, 63.5); //going to match loader 2 pt 1
-  chassis.pid_wait();
+  // chassis.pid_drive_set(4_in, 63.5); //going to match loader 2 pt 1
+  // chassis.pid_wait();
   chassis.pid_turn_set(270, 60);
   chassis.pid_wait();
-  chassis.pid_drive_set(23_in, 63.5); //going to match loader 2 pt2; og 22 -2/12
+  chassis.pid_drive_set(25_in, 63.5); //going to match loader 2 pt2; og 22 -2/12
   chassis.pid_wait();
 
   //intake from matchloader
@@ -565,11 +690,23 @@ void skills(){
 
 
   //drive to long goal
-  chassis.pid_drive_set(-25_in, 63.5); //backing to goal to score match loader 2
+  chassis.pid_drive_set(-23.5_in, 63.5); //backing to goal to score match loader 2
   chassis.pid_wait();
+
   intake.move (127); //scoreTop
-  scorer.move (127); //scoreTop
-  pros::delay (6000); // scored first match loader
+    scorer.move (127);
+
+  pros::delay (3000); // scored first match loader
+
+intake.move (-60); //scoreTop
+  pros::delay (1000); // scored first match loader
+intake.move (127); //scoreTop
+    scorer.move (127);
+      pros::delay (3000); // scored first match loader
+  //prep for matchloader
+  //scraper.set (true); removed b/c never closed above
+  intake.move (0); //stopAll
+  scorer.move (0); //stopAll
 
   loader.set (false);
   pros::delay (1000);
@@ -579,19 +716,24 @@ void skills(){
 
 
   chassis.drive_angle_set(90_deg); 
+  intake.move (127); //scoreTop
+    scorer.move (127);
+  pros::delay (5000); // scored first match loader
+
   chassis.pid_drive_set(8_in, 63.5);
   chassis.pid_wait();
   chassis.pid_turn_set(45_deg, 60);
-  chassis.pid_drive_set(25_in, 63.5);
+  chassis.pid_drive_set(28_in, 63.5);
   chassis.pid_wait();
   chassis.pid_swing_set(ez::RIGHT_SWING, 5, 90);  chassis.pid_wait();
-  chassis.pid_drive_set(0_in, 127,false);
+  chassis.pid_drive_set(3_in, 127,false);
   chassis.pid_wait();
   intake.move (-127); //scoreTop
 
   pros::delay (1000);
-  chassis.pid_drive_set(50_in, 127,false);
+  chassis.pid_drive_set(47_in, 127,false);
   chassis.pid_wait();
+  pros::delay (2000);
 
 /*
 
@@ -615,6 +757,166 @@ void skills(){
 
 }
 
+void Gpark(){
+  chassis.slew_drive_set(true);  // Enables global slew
+  chassis.slew_drive_constants_set(5_in, 50);
+  chassis.slew_turn_set(true);  // Enables global slew
+  chassis.slew_turn_constants_set(5_deg, 50);
+
+  //set heading
+  chassis.drive_angle_set(-90_deg);
+  loader.set (false);
+  pros::delay (1000);
+  intake.move (0); //stopAll
+  scorer.move (0); //stopAll
+  pros::delay (500);
+
+
+  chassis.drive_angle_set(90_deg); 
+  intake.move (127); //scoreTop
+    scorer.move (127);
+  pros::delay (5000); // scored first match loader
+
+  chassis.pid_drive_set(8_in, 63.5);
+  chassis.pid_wait();
+  chassis.pid_turn_set(45_deg, 60);
+  chassis.pid_drive_set(28_in, 63.5);
+  chassis.pid_wait();
+  chassis.pid_swing_set(ez::RIGHT_SWING, 5, 90);  chassis.pid_wait();
+  chassis.pid_drive_set(0_in, 127,false);
+  chassis.pid_wait();
+  intake.move (-127); //scoreTop
+
+  pros::delay (1000);
+  chassis.pid_drive_set(50_in, 127,false);
+  chassis.pid_wait();
+  pros::delay (2000);
+
+}
+
+void skillsBIG(){
+  chassis.slew_drive_set(true);  // Enables global slew
+  chassis.slew_drive_constants_set(3_in, 60);
+  chassis.slew_turn_set(true);  // Enables global slew
+  chassis.slew_turn_constants_set(3_deg, 60);
+  //Initialize as 270
+  chassis.drive_angle_set(270_deg); 
+  
+  chassis.pid_swing_set(ez::LEFT_SWING, -35, 110); 
+  chassis.pid_wait_quick_chain();
+  chassis.pid_turn_set(2_deg, 127);
+  chassis.pid_wait_quick_chain();
+
+  chassis.pid_drive_set(13_in, 127);
+  chassis.pid_wait_quick();
+  intake.move(127);
+
+  loader.set(true);  
+  pros::delay(500);
+
+  chassis.pid_drive_set(13_in, 127);
+  chassis.pid_wait_quick();
+
+ chassis.pid_drive_set(-2_in, 127,false);
+  chassis.pid_wait();
+  //Turn 135 left 
+  chassis.pid_turn_set(225_deg, 127, false);
+  chassis.pid_wait();
+  //Back 15 inches
+  chassis.pid_drive_set(-14.75_in, 127);
+  chassis.pid_wait();
+  intake.move(0);
+
+
+  intake.move(127);
+  scorer.move(-127);
+  loader.set(false);  
+  pros::delay(2000);
+
+  // long goal
+intake.move(0);
+  scorer.move(0);
+   chassis.pid_drive_set(48.25_in, 90);
+  chassis.pid_wait();
+  loader.set(true);  
+  pros::delay(250);
+  chassis.pid_turn_set(180_deg, 127, false);
+  chassis.pid_wait();
+
+  chassis.pid_drive_set(9_in, 80);
+  chassis.pid_wait();
+
+  intake.move(100);
+  pros::delay(4000);
+
+
+  chassis.pid_turn_set(180_deg, 80); // Safety Turn
+  chassis.pid_wait();
+    intake.move(127);
+
+  chassis.pid_drive_set(-23_in, 127);
+  chassis.pid_wait(); 
+    intake.move(127);
+
+ chassis.pid_turn_set(180_deg, 127, false);
+  chassis.pid_wait();
+  loader.set(false);  
+  // TUNE END ***************************************
+//long goal
+  scorer.move(127);
+  pros::delay(6000);
+
+   chassis.pid_drive_set(15.5_in, 63.5);
+  chassis.pid_wait();
+
+  chassis.pid_turn_set(90_deg, 45);
+  chassis.pid_wait();
+
+  //scraper.set (false); might help with getting all blocks
+  //pros::delay (1000);
+
+  //conveyor.move (0);
+
+  //drive to other side
+  //chassis.pid_turn_relative_set(180, 60);
+  //chassis.pid_turn_set(270_deg, 60);
+  //chassis.pid_wait();
+  chassis.pid_drive_set(92.5_in, 50);
+  chassis.pid_wait();
+
+  //drive to long goal
+  chassis.pid_turn_set(0, 60);
+  chassis.pid_wait();
+ chassis.pid_drive_set(7_in, 63.5); //going to match loader 2 pt2; og 22 -2/12
+  chassis.pid_wait();
+
+  pros::delay (4000);
+  chassis.pid_drive_set(-23_in, 50); //og -18 -2/12
+  chassis.pid_wait();
+
+   loader.set (false);
+  pros::delay (1000);
+  intake.move (0); //stopAll
+  scorer.move (0); //stopAll
+  pros::delay (500);
+
+
+  // chassis.drive_angle_set(-90_deg); 
+  // chassis.pid_drive_set(8_in, 63.5);
+  // chassis.pid_wait();
+  // chassis.pid_turn_set(45_deg, 60);
+  // chassis.pid_drive_set(25_in, 63.5);
+  // chassis.pid_wait();
+  // chassis.pid_swing_set(ez::RIGHT_SWING, 5, 90);  chassis.pid_wait();
+  // chassis.pid_drive_set(0_in, 127,false);
+  // chassis.pid_wait();
+  // intake.move (-127); //scoreTop
+
+  // pros::delay (1000);
+  // chassis.pid_drive_set(50_in, 127,false);
+  // chassis.pid_wait();
+
+}
 // Skills
 void skills2(){
 
