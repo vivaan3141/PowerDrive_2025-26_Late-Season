@@ -58,16 +58,16 @@ void initialize() {
 
   ez::as::auton_selector.autons_add({
       {"LEFT - 4 + 3 blocks - Middle+Long Goal\n\n Setup: Left Side 90", middleLongGoal},
+      {"Blue - - - LEFT - 4 + 3 blocks - Middle+Long Goal\n\n Setup: Left Side 90", BmiddleLongGoal},
       {"GG1 RIGHT - 7 blocks - Long Goal\n\n Setup: Right Side 90", elimLongGoalRight},
       {"LEFT - 4 blocks - Long Goal, Push into C-Zone\n\nSetup: Left Side FORWARD ",controlZoneLeftLongGoal},
       {"RIGHT - 4 blocks - Long Goal, Push into C-Zone\n\n Setup: Right Side FORWARD",controlZoneRightLongGoal},
-      {"*bad* LEFT - 4 + 3 blocks - Middle+Long Goal\n\n Setup: Left Side 90", GmiddleLongGoal},
       {"LEFT - 7 blocks - Long Goal\n\n Setup: Left Side 90", elimLongGoalLeft},
       {" Left SKILL.\n\n Setup: Left Side 90",skillsBIG},
       {"UNTESTED!! LEFT - 4 blocks - Middle Goal\n\n Setup: Left Side FORWARD", middleGoal},
       {"DO NOT RUN!! - RIGHT - 4 + 3 blocks - Middle+Long Goal\n\n Setup: Right Side 90", lowLong},
       {"Park", Gpark},
-      {"2.122 Right SKILLS.\n\n Setup: Right Side 90 ",skills},
+      {"2.3 Right SKILLS.\n\n Setup: Right Side 90 ",skills},
   });
 
   // Initialize chassis and auton selector
@@ -236,10 +236,14 @@ void ez_template_extras() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+  pros::Distance distance_sensor(11);
+                
+  
   // This is preference to what you like to drive on
   chassis.drive_brake_set(MOTOR_BRAKE_COAST);
 
   while (true) {
+
     // Gives you some extras to make EZ-Template ezier
     ez_template_extras();
 
@@ -274,6 +278,8 @@ void opcontrol() {
     else {
       scorer.move(0);
     }
+    // printf("Distance: %d mm\n", distance_sensor.get());
+    ez::screen_print("distance"+distance_sensor.get(),1);
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
 
   }

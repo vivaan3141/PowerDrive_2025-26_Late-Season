@@ -16,6 +16,6 @@ void soloAWP();
 void skills();
 void skillsBIG();
 
-void GmiddleLongGoal();
+void BmiddleLongGoal();
 void Gpark();
 
