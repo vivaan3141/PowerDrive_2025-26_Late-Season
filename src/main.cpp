@@ -31,7 +31,7 @@ ez::Drive chassis(
  */
 void initialize() {
   // Print our branding over your terminal :D
-  ez::ez_template_print();
+  // ez::ez_template_print();
   pros::delay(500);  // Stop the user from doing anything while legacy ports configure
 
   // Look at your horizontal tracking wheel and decide if it's in front of the midline of your robot or behind it
@@ -278,8 +278,12 @@ void opcontrol() {
     else {
       scorer.move(0);
     }
-    // printf("Distance: %d mm\n", distance_sensor.get());
-    ez::screen_print("distance"+distance_sensor.get(),1);
+    // master.clear();
+    // master.set_text(0, 0, "distance" + distance_sensor.get());
+    pros::delay(100);
+    master.clear_line(0);    // printf("Distance: %d mm\n", distance_sensor.get());
+    ez::screen_print("distance",1);
+    //+distance_sensor.get()
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
 
   }
