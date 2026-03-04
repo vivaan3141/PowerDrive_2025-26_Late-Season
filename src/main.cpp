@@ -8,7 +8,7 @@
 // Chassis constructor
 ez::Drive chassis(
     // These are your drive motors, the first motor is used for sensing!
-    {-5, -7, -11},     // Left Chassis Ports (negative port will reverse it!)
+    {-5, -7, -6},     // Left Chassis Ports (negative port will reverse it!)
     {3, 2, 8},  // Right Chassis Ports (negative port will reverse it!)
 
     1,      // IMU Port
@@ -57,15 +57,16 @@ void initialize() {
   // Autonomous Selector using LLEMU
 
   ez::as::auton_selector.autons_add({
-      {"LEFT - 4 + 3 blocks - Middle+Long Goal\n\n Setup: Left Side 90", middleLongGoal},
-      {"Blue - - - LEFT - 4 + 3 blocks - Middle+Long Goal\n\n Setup: Left Side 90", BmiddleLongGoal},
-      {"GG1 RIGHT - 7 blocks - Long Goal\n\n Setup: Right Side 90", elimLongGoalRight},
+      {"StateSkills -\n  RUN RUN RUN RUN!", StateSkills},
+      {"Working LEFT - 4 + 3 blocks - Middle+Long Goal\n\n Setup: Left Side 90", BmiddleLongGoal},
+      {"Working RIGHT - 7 blocks - Long Goal\n\n Setup: Right Side 90", elimLongGoalRight},
+      {"LEFT - 7 blocks - Long Goal\n\n Setup: Left Side 90", elimLongGoalLeft},
       {"LEFT - 4 blocks - Long Goal, Push into C-Zone\n\nSetup: Left Side FORWARD ",controlZoneLeftLongGoal},
       {"RIGHT - 4 blocks - Long Goal, Push into C-Zone\n\n Setup: Right Side FORWARD",controlZoneRightLongGoal},
-      {"LEFT - 7 blocks - Long Goal\n\n Setup: Left Side 90", elimLongGoalLeft},
-      {" Left SKILL.\n\n Setup: Left Side 90",skillsBIG},
-      {"UNTESTED!! LEFT - 4 blocks - Middle Goal\n\n Setup: Left Side FORWARD", middleGoal},
+      {"SMALL- LEFT - 4 blocks - Middle Goal\n\n Setup: Left Side FORWARD", middleGoal},
+      {"DO NUT RUN!! Left SKILL.\n\n Setup: Left Side 90",skillsBIG},
       {"DO NOT RUN!! - RIGHT - 4 + 3 blocks - Middle+Long Goal\n\n Setup: Right Side 90", lowLong},
+      {"DO NUT RUN!! - 4 + 3 blocks - Middle+Long Goal\n\n Setup: Left Side 90", middleLongGoal},
       {"Park", Gpark},
       {"2.3 Right SKILLS.\n\n Setup: Right Side 90 ",skills},
   });
@@ -262,6 +263,7 @@ void opcontrol() {
     } 
     else if (master.get_digital(DIGITAL_A)) {
       intake.move(-127);
+  //ez::screen_print(std::to_string(distance_sensor.get()));
     } 
     else {
       intake.move(0);
@@ -278,12 +280,7 @@ void opcontrol() {
     else {
       scorer.move(0);
     }
-    // master.clear();
-    // master.set_text(0, 0, "distance" + distance_sensor.get());
-    pros::delay(100);
-    master.clear_line(0);    // printf("Distance: %d mm\n", distance_sensor.get());
-    ez::screen_print("distance",1);
-    //+distance_sensor.get()
+   
     pros::delay(ez::util::DELAY_TIME);  // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
 
   }

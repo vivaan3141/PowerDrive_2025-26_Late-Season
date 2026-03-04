@@ -18,4 +18,4 @@ void skillsBIG();
 
 void BmiddleLongGoal();
 void Gpark();
-
+void StateSkills();
