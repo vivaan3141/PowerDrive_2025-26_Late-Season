@@ -16,6 +16,9 @@ void soloAWP();
 void skills();
 void skillsBIG();
 
+void test();
+
+
 void BmiddleLongGoal();
 void Gpark();
 void StateSkills();

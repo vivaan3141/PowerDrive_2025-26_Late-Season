@@ -57,12 +57,13 @@ void initialize() {
   // Autonomous Selector using LLEMU
 
   ez::as::auton_selector.autons_add({
-      {"StateSkills -\n  RUN RUN RUN RUN!", StateSkills},
-      {"Working LEFT - 4 + 3 blocks - Middle+Long Goal\n\n Setup: Left Side 90", BmiddleLongGoal},
       {"Working RIGHT - 7 blocks - Long Goal\n\n Setup: Right Side 90", elimLongGoalRight},
       {"LEFT - 7 blocks - Long Goal\n\n Setup: Left Side 90", elimLongGoalLeft},
       {"LEFT - 4 blocks - Long Goal, Push into C-Zone\n\nSetup: Left Side FORWARD ",controlZoneLeftLongGoal},
       {"RIGHT - 4 blocks - Long Goal, Push into C-Zone\n\n Setup: Right Side FORWARD",controlZoneRightLongGoal},
+      {"StateSkills -\n v2x", StateSkills},
+      {"park guy",test},
+      {"Working LEFT - 4 + 3 blocks - Middle+Long Goal\n\n Setup: Left Side 90", BmiddleLongGoal},
       {"SMALL- LEFT - 4 blocks - Middle Goal\n\n Setup: Left Side FORWARD", middleGoal},
       {"DO NUT RUN!! Left SKILL.\n\n Setup: Left Side 90",skillsBIG},
       {"DO NOT RUN!! - RIGHT - 4 + 3 blocks - Middle+Long Goal\n\n Setup: Right Side 90", lowLong},
